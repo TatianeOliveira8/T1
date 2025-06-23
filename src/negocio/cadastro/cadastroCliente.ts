@@ -1,7 +1,8 @@
-import Entrada from "../io/entrada"
-import Cliente from "../modelo/cliente"
-import CPF from "../modelo/cpf"
+import Entrada from "../../io/entrada"
+import Cliente from "../../modelo/cliente"
+import CPF from "../../modelo/cpf"
 import Cadastro from "./cadastro"
+import Telefone from "../../modelo/telefone"
 
 export default class CadastroCliente extends Cadastro {
     private clientes: Array<Cliente>
@@ -23,8 +24,14 @@ export default class CadastroCliente extends Cadastro {
         let dia = new Number(partesData[0].valueOf()).valueOf()
         let dataEmissao = new Date(ano, mes, dia)
         let cpf = new CPF(valor, dataEmissao);
+        let ddd = this.entrada.receberTexto(`Por favor informe o DDD do telefone: `);
+        let numeroTelefone = this.entrada.receberTexto(`Por favor informe o número do telefone: `);
+        let telefone = new Telefone(ddd, numeroTelefone);
         let cliente = new Cliente(nome, nomeSocial, cpf);
+        cliente.adicionarTelefone(telefone)
+
         this.clientes.push(cliente)
         console.log(`\nCadastro concluído :)\n`);
     }
+    
 }

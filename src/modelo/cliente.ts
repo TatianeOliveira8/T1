@@ -47,4 +47,23 @@ export default class Cliente {
     public get getPets(): Array<Pet>{
         return this.pets
     }
+public adicionarTelefone(telefone: Telefone): void {
+  this.telefones.push(telefone)
+}
+
+public adicionarPet(pet: Pet): void {
+        this.pets.push(pet);
+    }
+
+public removerPet(nomePet: string): void {
+  this.pets = this.pets.filter(pet => pet.getNome !== nomePet);
+}
+
+public adicionarProdutoConsumido(produto: Produto): void {
+  this.produtosConsumidos.push(produto);
+}
+
+public adicionarServicoConsumido(servico: Servico): void {
+  this.servicosConsumidos.push(servico);
+}
 }
